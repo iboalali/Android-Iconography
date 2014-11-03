@@ -4,7 +4,7 @@ Android-Iconography
 This application let's you generate android icon files with different resolution from a source file image file.
 
 
-Copyright 2014 iboalali
+Copyright © 2014 iboalali
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
