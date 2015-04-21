@@ -25,12 +25,15 @@ namespace AndroidIconography {
         private string xxxhdpi_192 = "-xxxhdpi";
         private string ic_launcher = "ic_launcher";
 
+        private bool loadedImage = false;
+
         Bitmap bitmap;
 
         public Form1 () {
             InitializeComponent();
 
             this.Icon = global::AndroidIconography.Properties.Resources.android_Iconagraphy_icon;
+            pb512_PlayStore.SizeMode = PictureBoxSizeMode.Zoom;
 
         }
 
@@ -84,8 +87,10 @@ namespace AndroidIconography {
                 pb48_mdpi.Image = bitmap;
                 bitmap = new Bitmap( bitmap, new Size( 32, 32 ) );
                 pb36_ldpi.Image = bitmap;
-                
+
             }
+
+            loadedImage = true;
 
         }
 
@@ -164,6 +169,98 @@ namespace AndroidIconography {
 
             Process.Start( Environment.CurrentDirectory );
 
+
+        }
+
+        private void radioButton_CheckedChanged ( object sender, EventArgs e ) {
+            if ( rbDrawable.Checked ) {
+                drawable = "drawable";
+
+            } else if ( rbMipmap.Checked ) {
+                drawable = "mipmap";
+
+            }
+
+
+        }
+
+        private void pb512_PlayStore_DragEnter ( object sender, DragEventArgs e ) {
+            if ( e.Data.GetDataPresent( DataFormats.FileDrop ) ) {
+                e.Effect = DragDropEffects.All;
+                //pDragDropImage.Visible = true;
+                if ( loadedImage ) {
+
+                    Bitmap ddbitmap = new Bitmap( ( Bitmap ) pb512_PlayStore.Image, new Size( 128, 128 ) );
+
+                    for ( int i = 0; i < ddbitmap.Width; i++ ) {
+                        for ( int j = 0; j < ddbitmap.Height; j++ ) {
+                            if ( ddbitmap.GetPixel( i, j ).A != 0 ) {
+                                ddbitmap.SetPixel( i, j, Color.FromArgb( 50, ddbitmap.GetPixel( i, j ) ) );
+                            }
+
+                        }
+                    }
+
+                    pbDragDropImage.Image = ddbitmap;
+                    pbDragDropImage.SizeMode = PictureBoxSizeMode.Zoom;
+                    pbDragDropImage.Visible = true;
+                    txtDragDropImage.Visible = true;
+                }
+
+
+
+            } else {
+                e.Effect = DragDropEffects.None;
+
+            }
+
+        }
+
+        private void pb512_PlayStore_DragDrop ( object sender, DragEventArgs e ) {
+            string[] s = ( string[] ) e.Data.GetData( DataFormats.FileDrop, false );
+
+            try {
+                bitmap = new Bitmap( s.First() );
+                pb512_PlayStore.Image = ( Bitmap ) bitmap.Clone();
+
+                bitmap = new Bitmap( bitmap, new Size( 192, 192 ) );
+                pb192_xxxhdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 144, 144 ) );
+                pb144_xxhdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 96, 96 ) );
+                pb96_xhdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 72, 72 ) );
+                pb72_hdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 64, 64 ) );
+                pb64_tvdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 48, 48 ) );
+                pb48_mdpi.Image = bitmap;
+                bitmap = new Bitmap( bitmap, new Size( 32, 32 ) );
+                pb36_ldpi.Image = bitmap;
+
+            } catch {
+
+                MessageBox.Show( "Not supported image format", "Error" );
+            }
+
+            pbDragDropImage.Visible = false;
+            txtDragDropImage.Visible = false;
+            loadedImage = true;
+            //pDragDropImage.Visible = false;
+        }
+
+        private void Form1_Load ( object sender, EventArgs e ) {
+            //pDragDropImage.BackColor = Color.FromArgb( 58, Color.White );
+            //pDragDropImage.BackColor = Color.Transparent;
+            pbDragDropImage.Visible = false;
+            txtDragDropImage.Visible = false;
+
+        }
+
+        private void Form1_DragLeave ( object sender, EventArgs e ) {
+            //pDragDropImage.Visible = false;
+            pbDragDropImage.Visible = false;
+            txtDragDropImage.Visible = false;
 
         }
 
