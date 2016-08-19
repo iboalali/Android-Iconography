@@ -20,6 +20,6 @@ limitations under the License.
 
 ####Contact info:
 
-#####Ibrahim Alali
+#####Ibrahim Al-Alali
 #####[iboalali@gmail.com](mailto:iboalali@gmail.com)
 #####[iboalali.com](http://iboalali.com/)
