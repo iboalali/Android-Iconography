@@ -124,46 +124,52 @@ namespace AndroidIconography {
 
             }
 
+            string fileName = ic_launcher;
+
+            if (textBox1.Text != String.Empty) {
+                fileName = textBox1.Text;
+            }
+
             Directory.CreateDirectory( res_path );
 
             if ( cb192_xxxhdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + xxxhdpi_192 );
-                pb192_xxxhdpi.Image.Save( Path.Combine( res_path, drawable + xxxhdpi_192 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb192_xxxhdpi.Image.Save( Path.Combine( res_path, drawable + xxxhdpi_192 ) + "\\" + fileName + ".png", ImageFormat.Png );
             }
 
             if ( cb144_xxhdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + xxhdpi_144 );
-                pb144_xxhdpi.Image.Save( Path.Combine( res_path, drawable + xxhdpi_144 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb144_xxhdpi.Image.Save( Path.Combine( res_path, drawable + xxhdpi_144 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
             if ( cb96_xhdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + xhdpi_96 );
-                pb96_xhdpi.Image.Save( Path.Combine( res_path, drawable + xhdpi_96 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb96_xhdpi.Image.Save( Path.Combine( res_path, drawable + xhdpi_96 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
             if ( cb72_hdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + hdpi_72 );
-                pb72_hdpi.Image.Save( Path.Combine( res_path, drawable + hdpi_72 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb72_hdpi.Image.Save( Path.Combine( res_path, drawable + hdpi_72 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
             if ( cb64_tvdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + tvdpi_64 );
-                pb64_tvdpi.Image.Save( Path.Combine( res_path, drawable + tvdpi_64 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb64_tvdpi.Image.Save( Path.Combine( res_path, drawable + tvdpi_64 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
             if ( cb48_mdpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + mdpi_48 );
-                pb48_mdpi.Image.Save( Path.Combine( res_path, drawable + mdpi_48 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb48_mdpi.Image.Save( Path.Combine( res_path, drawable + mdpi_48 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
             if ( cb36_ldpi.Checked ) {
                 Directory.CreateDirectory( res_path + @"\" + drawable + ldpi_36 );
-                pb36_ldpi.Image.Save( Path.Combine( res_path, drawable + ldpi_36 ) + "\\" + ic_launcher + ".png", ImageFormat.Png );
+                pb36_ldpi.Image.Save( Path.Combine( res_path, drawable + ldpi_36 ) + "\\" + fileName + ".png", ImageFormat.Png );
 
             }
 
